@@ -492,6 +492,32 @@
 
   .info-card.full { grid-column: 1 / -1; }
 
+  /* ── Directions Link ── */
+  .directions-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+    transition: opacity 0.15s;
+  }
+  .directions-link:hover { opacity: 0.65; }
+
+  /* On boarding pass, directions link inherits the panel's text color */
+  .bp-right .directions-link {
+    color: inherit;
+    opacity: 0.7;
+    border-bottom-color: currentColor;
+  }
+  .bp-right .directions-link:hover { opacity: 1; }
+
   /* ── LOADING PAGE ── */
   #loading-page {
     display: none;
@@ -609,6 +635,11 @@
   .btn-save {
     background: var(--navy);
     color: #fff;
+  }
+
+  .btn-calendar {
+    background: var(--gold);
+    color: var(--navy-deep);
   }
 
   .btn-back {
@@ -872,96 +903,211 @@
   }
 
   /* ── Airline Themes ── */
-  .theme-united .bp-left { background: linear-gradient(135deg, #002244 0%, #001a38 100%); color: #fff; }
-  .theme-united .bp-right { background: #003580; color: #fff; }
-  .theme-united .bp-route-line { background: #c0c8d4; }
-  .theme-united .bp-tear-circle { background: #001a38; }
 
-  .theme-singapore .bp-left { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #FCB130; }
-  .theme-singapore .bp-right { background: #0f0f1a; color: #FCB130; }
+  /* UNITED: #005DAA navy blue + #ffffff, globe motif */
+  .theme-united .bp-left { background: linear-gradient(160deg, #003580 0%, #005DAA 50%, #1a6abf 100%); color: #fff; }
+  .theme-united .bp-right { background: #f0f4fa; color: #003580; }
+  .theme-united .bp-route-line { background: rgba(255,255,255,0.4); }
+  .theme-united .bp-tear-circle { background: #f0f4fa; }
+  .theme-united .bp-tear-line { border-color: rgba(0,93,170,0.2); }
+  .theme-united .bp-info-label { opacity: 0.6; }
+  .theme-united .bp-right .bp-info-label { color: #005DAA; opacity: 0.7; }
+  .theme-united .bp-right .bp-info-value { color: #003580; }
+  .theme-united .bp-right .bp-flight-num { color: #005DAA; }
+  .theme-united .bp-right .barcode-bar { background: #003580; }
+  .theme-united .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #c5d8ef 6px, #c5d8ef 10px); }
+
+  /* SINGAPORE: #1D4886 navy + #FCB130 gold, premium dark */
+  .theme-singapore .bp-left { background: linear-gradient(155deg, #0a1628 0%, #1D4886 100%); color: #FCB130; }
+  .theme-singapore .bp-right { background: #10203f; color: #FCB130; }
   .theme-singapore .bp-route-line { background: #FCB130; }
-  .theme-singapore .bp-tear-circle { background: #0f0f1a; }
-  .theme-singapore .bp-info-label { color: rgba(252,177,48,0.6); }
+  .theme-singapore .bp-tear-circle { background: #0a1628; }
+  .theme-singapore .bp-tear-line { border-color: rgba(252,177,48,0.25); }
+  .theme-singapore .bp-info-label { color: rgba(252,177,48,0.55); }
+  .theme-singapore .bp-flight-num { color: rgba(252,177,48,0.5); }
+  .theme-singapore .bp-right .bp-info-value { color: #FCB130; }
+  .theme-singapore .barcode-bar { background: #FCB130; }
+  .theme-singapore .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #0a1628 6px, #0a1628 10px); }
 
-  .theme-airindia .bp-left { background: linear-gradient(135deg, #8B0000 0%, #6b0000 100%); color: #FFD700; }
-  .theme-airindia .bp-right { background: #5a0000; color: #FFD700; }
-  .theme-airindia .bp-route-line { background: #FFD700; }
-  .theme-airindia .bp-tear-circle { background: #5a0000; }
+  /* AIR INDIA: #CC0000 red + #FF9933 saffron, maharaja heritage */
+  .theme-airindia .bp-left { background: linear-gradient(150deg, #8B0000 0%, #CC0000 60%, #b30000 100%); color: #fff; }
+  .theme-airindia .bp-right { background: #fff8f0; color: #8B0000; }
+  .theme-airindia .bp-route-line { background: rgba(255,255,255,0.45); }
+  .theme-airindia .bp-tear-circle { background: #fff8f0; }
+  .theme-airindia .bp-tear-line { border-color: rgba(139,0,0,0.15); }
+  .theme-airindia .bp-right .bp-info-label { color: #CC0000; opacity: 0.7; }
+  .theme-airindia .bp-right .bp-info-value { color: #8B0000; }
+  .theme-airindia .bp-right .bp-flight-num { color: #CC0000; opacity: 0.6; }
+  .theme-airindia .bp-right .barcode-bar { background: #CC0000; }
+  .theme-airindia .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #f0e0e0 6px, #f0e0e0 10px); }
 
-  .theme-airfrance .bp-left { background: linear-gradient(135deg, #002395 0%, #001a7a 100%); color: #fff; }
-  .theme-airfrance .bp-right { background: #d42121; color: #fff; }
-  .theme-airfrance .bp-route-line { background: #fff; }
-  .theme-airfrance .bp-tear-circle { background: #002395; }
+  /* AIR FRANCE: #002395 blue + #ED2939 red, tricolore chic */
+  .theme-airfrance .bp-left { background: linear-gradient(150deg, #001a70 0%, #002395 60%, #0030c0 100%); color: #fff; }
+  .theme-airfrance .bp-right { background: #ED2939; color: #fff; }
+  .theme-airfrance .bp-route-line { background: rgba(255,255,255,0.5); }
+  .theme-airfrance .bp-tear-circle { background: #001a70; }
+  .theme-airfrance .bp-tear-line { border-color: rgba(255,255,255,0.2); }
+  .theme-airfrance .bp-info-label { opacity: 0.65; }
+  .theme-airfrance .bp-flight-num { opacity: 0.55; }
+  .theme-airfrance .barcode-bar { background: #fff; }
+  .theme-airfrance .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #001060 6px, #001060 10px); }
 
-  .theme-hawaiian .bp-left { background: linear-gradient(135deg, #6B2D8B 0%, #4a1a6b 100%); color: #FF9EAA; }
-  .theme-hawaiian .bp-right { background: #3a1255; color: #FF9EAA; }
-  .theme-hawaiian .bp-route-line { background: #FF9EAA; }
-  .theme-hawaiian .bp-tear-circle { background: #3a1255; }
+  /* HAWAIIAN: #523090 purple + #D2058A magenta + #EF3138 red */
+  .theme-hawaiian .bp-left { background: linear-gradient(145deg, #2a1050 0%, #523090 55%, #7a20b0 100%); color: #fff; }
+  .theme-hawaiian .bp-right { background: linear-gradient(160deg, #9D178D 0%, #D2058A 100%); color: #fff; }
+  .theme-hawaiian .bp-route-line { background: rgba(255,255,255,0.4); }
+  .theme-hawaiian .bp-tear-circle { background: #2a1050; }
+  .theme-hawaiian .bp-tear-line { border-color: rgba(255,255,255,0.2); }
+  .theme-hawaiian .bp-info-label { opacity: 0.65; }
+  .theme-hawaiian .barcode-bar { background: #fff; }
+  .theme-hawaiian .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #3a1a5a 6px, #3a1a5a 10px); }
 
-  .theme-ana .bp-left { background: linear-gradient(135deg, #13316c 0%, #0b2050 100%); color: #c8d8f0; }
-  .theme-ana .bp-right { background: #0b1a3d; color: #c8d8f0; }
-  .theme-ana .bp-route-line { background: #c8d8f0; }
-  .theme-ana .bp-tear-circle { background: #0b1a3d; }
+  /* ANA: #13316C navy + #FFFFFF, minimalist Japanese */
+  .theme-ana .bp-left { background: linear-gradient(160deg, #0a1e48 0%, #13316C 60%, #1a4085 100%); color: #fff; }
+  .theme-ana .bp-right { background: #fff; color: #13316C; }
+  .theme-ana .bp-route-line { background: rgba(255,255,255,0.4); }
+  .theme-ana .bp-tear-circle { background: #fff; }
+  .theme-ana .bp-tear-line { border-color: rgba(19,49,108,0.15); }
+  .theme-ana .bp-right .bp-info-label { color: #13316C; opacity: 0.55; }
+  .theme-ana .bp-right .bp-info-value { color: #0a1e48; }
+  .theme-ana .bp-right .bp-flight-num { color: #13316C; opacity: 0.45; }
+  .theme-ana .bp-right .barcode-bar { background: #13316C; }
+  .theme-ana .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #dce6f5 6px, #dce6f5 10px); }
 
-  .theme-vistara .bp-left { background: linear-gradient(135deg, #5B2D8E 0%, #3d1a6b 100%); color: #D4AF37; }
-  .theme-vistara .bp-right { background: #2d0f5a; color: #D4AF37; }
+  /* VISTARA: #5B2D8E purple + #D4AF37 gold, tata premium */
+  .theme-vistara .bp-left { background: linear-gradient(150deg, #2d1250 0%, #5B2D8E 60%, #7a3ab5 100%); color: #D4AF37; }
+  .theme-vistara .bp-right { background: #1a0a35; color: #D4AF37; }
   .theme-vistara .bp-route-line { background: #D4AF37; }
-  .theme-vistara .bp-tear-circle { background: #2d0f5a; }
+  .theme-vistara .bp-tear-circle { background: #1a0a35; }
+  .theme-vistara .bp-tear-line { border-color: rgba(212,175,55,0.25); }
+  .theme-vistara .bp-info-label { color: rgba(212,175,55,0.55); }
+  .theme-vistara .bp-flight-num { color: rgba(212,175,55,0.45); }
+  .theme-vistara .barcode-bar { background: #D4AF37; }
+  .theme-vistara .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #0e0522 6px, #0e0522 10px); }
 
-  .theme-qantas .bp-left { background: linear-gradient(135deg, #CC0000 0%, #990000 100%); color: #fff; }
-  .theme-qantas .bp-right { background: #aa0000; color: #fff; }
-  .theme-qantas .bp-route-line { background: #fff; }
-  .theme-qantas .bp-tear-circle { background: #aa0000; }
+  /* QANTAS: #E40000 red + #ffffff, bold Australian */
+  .theme-qantas .bp-left { background: linear-gradient(155deg, #aa0000 0%, #E40000 60%, #ff1a1a 100%); color: #fff; }
+  .theme-qantas .bp-right { background: #1a1a1a; color: #fff; }
+  .theme-qantas .bp-route-line { background: rgba(255,255,255,0.5); }
+  .theme-qantas .bp-tear-circle { background: #1a1a1a; }
+  .theme-qantas .bp-tear-line { border-color: rgba(255,255,255,0.15); }
+  .theme-qantas .bp-info-label { opacity: 0.55; }
+  .theme-qantas .barcode-bar { background: #fff; }
+  .theme-qantas .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #880000 6px, #880000 10px); }
 
-  .theme-southwest .bp-left { background: linear-gradient(135deg, #304CB2 0%, #202f8a 100%); color: #FFBF27; }
-  .theme-southwest .bp-right { background: #CC0000; color: #fff; }
-  .theme-southwest .bp-route-line { background: #FFBF27; }
-  .theme-southwest .bp-tear-circle { background: #202f8a; }
+  /* SOUTHWEST: #2E4BB1 blue + #E51D23 red + #F9B612 gold */
+  .theme-southwest .bp-left { background: linear-gradient(150deg, #1a2e80 0%, #2E4BB1 60%, #3a5cc7 100%); color: #F9B612; }
+  .theme-southwest .bp-right { background: #E51D23; color: #fff; }
+  .theme-southwest .bp-route-line { background: #F9B612; }
+  .theme-southwest .bp-tear-circle { background: #1a2e80; }
+  .theme-southwest .bp-tear-line { border-color: rgba(255,255,255,0.2); }
+  .theme-southwest .bp-info-label { color: rgba(249,182,18,0.6); }
+  .theme-southwest .bp-right .bp-info-label { opacity: 0.7; }
+  .theme-southwest .barcode-bar { background: #fff; }
+  .theme-southwest .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #0f1a55 6px, #0f1a55 10px); }
 
-  .theme-virgin .bp-left { background: linear-gradient(135deg, #E10A0A 0%, #b50000 100%); color: #fff; }
+  /* VIRGIN ATLANTIC: #E10A0A red + #1a1a1a dark charcoal */
+  .theme-virgin .bp-left { background: linear-gradient(150deg, #8b0000 0%, #C80000 50%, #E10A0A 100%); color: #fff; }
   .theme-virgin .bp-right { background: #1a1a1a; color: #fff; }
-  .theme-virgin .bp-route-line { background: #fff; }
-  .theme-virgin .bp-tear-circle { background: #b50000; }
+  .theme-virgin .bp-route-line { background: rgba(255,255,255,0.45); }
+  .theme-virgin .bp-tear-circle { background: #1a1a1a; }
+  .theme-virgin .bp-tear-line { border-color: rgba(255,255,255,0.12); }
+  .theme-virgin .bp-info-label { opacity: 0.55; }
+  .theme-virgin .barcode-bar { background: #E10A0A; }
+  .theme-virgin .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #600000 6px, #600000 10px); }
 
-  .theme-etihad .bp-left { background: linear-gradient(135deg, #BFA06E 0%, #8a6d3d 100%); color: #1a1a2e; }
-  .theme-etihad .bp-right { background: #1a1a2e; color: #BFA06E; }
-  .theme-etihad .bp-route-line { background: #1a1a2e; }
-  .theme-etihad .bp-tear-circle { background: #1a1a2e; }
+  /* ETIHAD: #C5963A gold + #1a1a2e dark, abu dhabi luxury */
+  .theme-etihad .bp-left { background: linear-gradient(150deg, #1a1a2e 0%, #2a2a42 60%, #1e1e35 100%); color: #C5963A; }
+  .theme-etihad .bp-right { background: #C5963A; color: #1a1a2e; }
+  .theme-etihad .bp-route-line { background: #C5963A; }
+  .theme-etihad .bp-tear-circle { background: #C5963A; }
+  .theme-etihad .bp-tear-line { border-color: rgba(197,150,58,0.3); }
+  .theme-etihad .bp-info-label { color: rgba(197,150,58,0.55); }
+  .theme-etihad .bp-right .bp-info-label { color: rgba(26,26,46,0.6); }
+  .theme-etihad .bp-right .bp-info-value { color: #1a1a2e; }
+  .theme-etihad .bp-right .bp-flight-num { color: rgba(26,26,46,0.5); }
+  .theme-etihad .bp-right .barcode-bar { background: #1a1a2e; }
+  .theme-etihad .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #0e0e1e 6px, #0e0e1e 10px); }
 
-  .theme-delta .bp-left { background: linear-gradient(135deg, #003366 0%, #002244 100%); color: #fff; }
+  /* DELTA: #003366 navy + #CC0000 red, american heritage */
+  .theme-delta .bp-left { background: linear-gradient(150deg, #001e3c 0%, #003366 60%, #004080 100%); color: #fff; }
   .theme-delta .bp-right { background: #CC0000; color: #fff; }
-  .theme-delta .bp-route-line { background: #fff; }
-  .theme-delta .bp-tear-circle { background: #003366; }
+  .theme-delta .bp-route-line { background: rgba(255,255,255,0.45); }
+  .theme-delta .bp-tear-circle { background: #001e3c; }
+  .theme-delta .bp-tear-line { border-color: rgba(255,255,255,0.2); }
+  .theme-delta .bp-info-label { opacity: 0.6; }
+  .theme-delta .barcode-bar { background: #fff; }
+  .theme-delta .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #000e1e 6px, #000e1e 10px); }
 
-  .theme-royaljordanian .bp-left { background: linear-gradient(135deg, #006847 0%, #004d32 100%); color: #C8A951; }
-  .theme-royaljordanian .bp-right { background: #004030; color: #C8A951; }
-  .theme-royaljordanian .bp-route-line { background: #C8A951; }
-  .theme-royaljordanian .bp-tear-circle { background: #004030; }
+  /* ROYAL JORDANIAN: black + #CE1126 red + gold, hashemite falcon */
+  .theme-royaljordanian .bp-left { background: linear-gradient(150deg, #0a0a0a 0%, #1a1a1a 60%, #0d0d0d 100%); color: #D4AF37; }
+  .theme-royaljordanian .bp-right { background: #CE1126; color: #fff; }
+  .theme-royaljordanian .bp-route-line { background: #D4AF37; }
+  .theme-royaljordanian .bp-tear-circle { background: #1a1a1a; }
+  .theme-royaljordanian .bp-tear-line { border-color: rgba(255,255,255,0.18); }
+  .theme-royaljordanian .bp-info-label { color: rgba(212,175,55,0.6); }
+  .theme-royaljordanian .bp-right .bp-info-label { color: rgba(255,255,255,0.65); }
+  .theme-royaljordanian .bp-right .bp-info-value { color: #fff; }
+  .theme-royaljordanian .bp-right .bp-flight-num { color: rgba(255,255,255,0.5); }
+  .theme-royaljordanian .bp-right .barcode-bar { background: #fff; }
+  .theme-royaljordanian .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #8a0a1a 6px, #8a0a1a 10px); }
 
-  .theme-jetblue .bp-left { background: linear-gradient(135deg, #003876 0%, #002a5c 100%); color: #00c3e3; }
-  .theme-jetblue .bp-right { background: #00c3e3; color: #003876; }
-  .theme-jetblue .bp-route-line { background: #00c3e3; }
-  .theme-jetblue .bp-tear-circle { background: #002a5c; }
+  /* JETBLUE: #003876 navy + #00B2E3 cyan, fresh american */
+  .theme-jetblue .bp-left { background: linear-gradient(150deg, #001e44 0%, #003876 60%, #004a9a 100%); color: #00B2E3; }
+  .theme-jetblue .bp-right { background: #00B2E3; color: #003876; }
+  .theme-jetblue .bp-route-line { background: #00B2E3; }
+  .theme-jetblue .bp-tear-circle { background: #003876; }
+  .theme-jetblue .bp-tear-line { border-color: rgba(0,178,227,0.3); }
+  .theme-jetblue .bp-info-label { color: rgba(0,178,227,0.6); }
+  .theme-jetblue .bp-right .bp-info-label { color: rgba(0,56,118,0.65); }
+  .theme-jetblue .bp-right .bp-info-value { color: #001e44; }
+  .theme-jetblue .bp-right .bp-flight-num { color: rgba(0,56,118,0.5); }
+  .theme-jetblue .bp-right .barcode-bar { background: #003876; }
+  .theme-jetblue .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #001030 6px, #001030 10px); }
 
-  .theme-american .bp-left { background: linear-gradient(135deg, #0078d2 0%, #0060b0 100%); color: #fff; }
-  .theme-american .bp-right { background: #c8102e; color: #fff; }
-  .theme-american .bp-route-line { background: #fff; }
-  .theme-american .bp-tear-circle { background: #0078d2; }
+  /* AMERICAN: #0078D2 blue + #C8102E red + silver, eagle */
+  .theme-american .bp-left { background: linear-gradient(150deg, #003a70 0%, #0078D2 60%, #1a8ae0 100%); color: #fff; }
+  .theme-american .bp-right { background: #f8f8f8; color: #0078D2; }
+  .theme-american .bp-route-line { background: rgba(255,255,255,0.45); }
+  .theme-american .bp-tear-circle { background: #f8f8f8; }
+  .theme-american .bp-tear-line { border-color: rgba(0,120,210,0.15); }
+  .theme-american .bp-right .bp-info-label { color: #C8102E; opacity: 0.7; }
+  .theme-american .bp-right .bp-info-value { color: #003a70; }
+  .theme-american .bp-right .bp-flight-num { color: rgba(0,58,112,0.45); }
+  .theme-american .bp-right .barcode-bar { background: #0078D2; }
+  .theme-american .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #d8e8f5 6px, #d8e8f5 10px); }
 
-  .theme-swiss .bp-left { background: linear-gradient(135deg, #E10A0A 0%, #b50000 100%); color: #fff; }
-  .theme-swiss .bp-right { background: #1a1a1a; color: #fff; }
-  .theme-swiss .bp-route-line { background: #fff; }
-  .theme-swiss .bp-tear-circle { background: #b50000; }
+  /* SWISS: #FF0000 red + #1a1a1a dark, helvetica precision */
+  .theme-swiss .bp-left { background: linear-gradient(155deg, #aa0000 0%, #CC0000 50%, #FF0000 100%); color: #fff; }
+  .theme-swiss .bp-right { background: #f5f5f5; color: #1a1a1a; }
+  .theme-swiss .bp-route-line { background: rgba(255,255,255,0.5); }
+  .theme-swiss .bp-tear-circle { background: #f5f5f5; }
+  .theme-swiss .bp-tear-line { border-color: rgba(0,0,0,0.1); }
+  .theme-swiss .bp-right .bp-info-label { color: #CC0000; opacity: 0.7; }
+  .theme-swiss .bp-right .bp-info-value { color: #1a1a1a; }
+  .theme-swiss .bp-right .bp-flight-num { color: rgba(0,0,0,0.4); }
+  .theme-swiss .bp-right .barcode-bar { background: #CC0000; }
+  .theme-swiss .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #e0e0e0 6px, #e0e0e0 10px); }
 
-  .theme-latam .bp-left { background: linear-gradient(135deg, #E10A0A 0%, #980000 100%); color: #fff; }
+  /* LATAM: #E10A0A red + #003087 blue, latin america */
+  .theme-latam .bp-left { background: linear-gradient(150deg, #7a0000 0%, #C00000 50%, #E10A0A 100%); color: #fff; }
   .theme-latam .bp-right { background: #003087; color: #fff; }
-  .theme-latam .bp-route-line { background: #fff; }
-  .theme-latam .bp-tear-circle { background: #980000; }
+  .theme-latam .bp-route-line { background: rgba(255,255,255,0.45); }
+  .theme-latam .bp-tear-circle { background: #7a0000; }
+  .theme-latam .bp-tear-line { border-color: rgba(255,255,255,0.18); }
+  .theme-latam .bp-info-label { opacity: 0.6; }
+  .theme-latam .barcode-bar { background: #fff; }
+  .theme-latam .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #550000 6px, #550000 10px); }
 
-  .theme-aircanada .bp-left { background: linear-gradient(135deg, #F01428 0%, #c00010 100%); color: #fff; }
+  /* AIR CANADA: #F01428 red + #000000 black, maple leaf */
+  .theme-aircanada .bp-left { background: linear-gradient(150deg, #a00010 0%, #D01020 50%, #F01428 100%); color: #fff; }
   .theme-aircanada .bp-right { background: #111111; color: #fff; }
-  .theme-aircanada .bp-route-line { background: #fff; }
-  .theme-aircanada .bp-tear-circle { background: #c00010; }
+  .theme-aircanada .bp-route-line { background: rgba(255,255,255,0.5); }
+  .theme-aircanada .bp-tear-circle { background: #111111; }
+  .theme-aircanada .bp-tear-line { border-color: rgba(255,255,255,0.12); }
+  .theme-aircanada .bp-info-label { opacity: 0.55; }
+  .theme-aircanada .barcode-bar { background: #F01428; }
+  .theme-aircanada .bp-perforation { background: repeating-linear-gradient(to bottom, transparent 0px, transparent 6px, #700010 6px, #700010 10px); }
 
   /* Responsive tweaks */
   @media (max-width: 480px) {
@@ -1041,7 +1187,7 @@
     width: 100%;
     align-self: center;
     max-width: 460px;
-    margin: 0 auto;
+    margin: 24px auto 0;
   }
 
   .event-info {
@@ -1127,7 +1273,7 @@
   <div class="home-body">
     <div class="checkin-card">
       <h2>Online Check-In</h2>
-      <p>Enter your booking confirmation number — the primary contact's phone number — to retrieve your boarding pass.</p>
+      <p>Enter your booking confirmation number — the primary contact's phone number — to retrieve your table number and boarding pass for the evening.</p>
       <label class="input-label" for="code-input">Booking Confirmation</label>
       <div class="input-wrap">
         <input type="tel" id="code-input" placeholder="Enter phone number" maxlength="15" autocomplete="off" inputmode="numeric"/>
@@ -1162,26 +1308,23 @@
         <div class="info-card full">
           <div class="ic-label">Address</div>
           <div class="ic-value">1050 King Georges Post Rd, Fords, NJ 08863</div>
+          <a href="https://maps.google.com/?q=1050+King+Georges+Post+Rd,+Fords,+NJ+08863" target="_blank" rel="noopener" class="directions-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Get Directions
+          </a>
         </div>
         <!-- Add more info cards here as needed -->
       </div>
     </div>
 
-    <!-- Dress Code & Gifts -->
+    <!-- Dress Code -->
     <div class="event-info">
       <div class="section-label">Passenger Guidelines</div>
       <div class="guideline-card">
         <div class="guideline-row">
           <div>
-            <div class="guideline-title">Dress Code — Western Formal</div>
-            <div class="guideline-body">Western formal attire is requested. As the guest of honor will be in blue, we kindly ask that guests avoid blue and opt for neutral tones or any other color.</div>
-          </div>
-        </div>
-        <div class="guideline-divider"></div>
-        <div class="guideline-row">
-          <div>
-            <div class="guideline-title">Gifts</div>
-            <div class="guideline-body">No boxed gifts, please.</div>
+            <div class="guideline-title">Dress Code — Western Semi-Formal</div>
+            <div class="guideline-body">Western semi-formal attire is requested. As the guest of honor will be in blue, we kindly ask that guests opt for other colors or neutral tones.</div>
           </div>
         </div>
       </div>
@@ -1225,6 +1368,7 @@
 
   <div class="bp-actions">
     <button class="btn-action btn-save" onclick="saveBoardingPass()">⬇ Save as Image</button>
+    <button class="btn-action btn-calendar" onclick="addToCalendar()">📅 Add to Calendar</button>
     <button class="btn-action btn-back" onclick="goHome()">← Check In Again</button>
   </div>
 
@@ -1232,21 +1376,14 @@
     Screenshot or save your boarding pass and present it at the door. ✈
   </div>
 
-  <!-- Dress Code & Gifts on BP page -->
+  <!-- Dress Code on BP page -->
   <div style="width:100%;max-width:720px;margin-top:8px;">
     <div class="section-label" style="color:var(--navy);border-color:var(--border);">Passenger Guidelines</div>
     <div class="guideline-card">
       <div class="guideline-row">
         <div>
-          <div class="guideline-title">Dress Code — Western Formal</div>
-          <div class="guideline-body">Western formal attire is requested. As the guest of honor will be in blue, we kindly ask that guests avoid blue and opt for neutral tones or any other color.</div>
-        </div>
-      </div>
-      <div class="guideline-divider"></div>
-      <div class="guideline-row">
-        <div>
-          <div class="guideline-title">Gifts</div>
-          <div class="guideline-body">No boxed gifts, please.</div>
+          <div class="guideline-title">Dress Code — Western Semi-Formal</div>
+          <div class="guideline-body">Western semi-formal attire is requested. As the guest of honor will be in blue, we kindly ask that guests opt for other colors or neutral tones.</div>
         </div>
       </div>
     </div>
@@ -1344,11 +1481,105 @@ const guests = {
   "2482079959": { name: "Rajesh Da & Family", table: 18, seats: 4, airline: "Air Canada", theme: "aircanada", tagline: "A Breath of Fresh Air" },
 };
 
+// Airline-specific design configs: taglines, decorative SVG patterns, and icons
+const airlineDesigns = {
+  united: {
+    tagline: "Fly the Friendly Skies",
+    pattern: `<svg style="position:absolute;right:-20px;bottom:-20px;opacity:0.06;z-index:0;" width="180" height="180" viewBox="0 0 180 180"><circle cx="90" cy="90" r="80" stroke="white" stroke-width="1.5" fill="none"/><circle cx="90" cy="90" r="55" stroke="white" stroke-width="1" fill="none"/><circle cx="90" cy="90" r="30" stroke="white" stroke-width="0.8" fill="none"/><line x1="10" y1="90" x2="170" y2="90" stroke="white" stroke-width="0.8"/><line x1="90" y1="10" x2="90" y2="170" stroke="white" stroke-width="0.8"/><ellipse cx="90" cy="90" rx="80" ry="32" stroke="white" stroke-width="0.7" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="15" stroke="currentColor" stroke-width="1.5"/><ellipse cx="18" cy="18" rx="15" ry="6" stroke="currentColor" stroke-width="1"/><line x1="3" y1="18" x2="33" y2="18" stroke="currentColor" stroke-width="1"/></svg>`
+  },
+  singapore: {
+    tagline: "A Great Way to Fly",
+    pattern: `<svg style="position:absolute;right:-10px;top:10px;opacity:0.09;z-index:0;" width="160" height="160" viewBox="0 0 160 160"><path d="M80 10 L94 50 L138 50 L104 74 L118 115 L80 90 L42 115 L56 74 L22 50 L66 50 Z" stroke="#FCB130" stroke-width="1.2" fill="none"/><path d="M80 32 L89 58 L117 58 L96 73 L104 100 L80 85 L56 100 L64 73 L43 58 L71 58 Z" stroke="#FCB130" stroke-width="0.7" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M18 4 L21 13 L31 13 L23 19 L26 29 L18 23 L10 29 L13 19 L5 13 L15 13 Z" stroke="#FCB130" stroke-width="1.3" fill="none"/></svg>`
+  },
+  airindia: {
+    tagline: "The Wings of India",
+    pattern: `<svg style="position:absolute;right:-15px;bottom:-10px;opacity:0.07;z-index:0;" width="160" height="160" viewBox="0 0 160 160"><circle cx="80" cy="80" r="60" stroke="currentColor" stroke-width="1" fill="none"/><path d="M80 20 Q110 50 80 80 Q50 110 80 140" stroke="currentColor" stroke-width="1" fill="none"/><path d="M20 80 Q50 50 80 80 Q110 110 140 80" stroke="currentColor" stroke-width="1" fill="none"/><circle cx="80" cy="80" r="8" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="14" stroke="currentColor" stroke-width="1.2"/><path d="M18 6 Q24 14 18 18 Q12 22 18 30" stroke="currentColor" stroke-width="1" fill="none"/><path d="M6 18 Q14 12 18 18 Q22 24 30 18" stroke="currentColor" stroke-width="1" fill="none"/></svg>`
+  },
+  airfrance: {
+    tagline: "France Is in the Air",
+    pattern: `<svg style="position:absolute;left:0;top:0;bottom:0;width:8px;height:100%;z-index:0;" viewBox="0 0 8 300" preserveAspectRatio="none"><rect x="0" y="0" width="2.6" height="300" fill="#002395" opacity="0.4"/><rect x="2.7" y="0" width="2.6" height="300" fill="white" opacity="0.3"/><rect x="5.4" y="0" width="2.6" height="300" fill="#ED2939" opacity="0.4"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M7 27 C7 27 14 11 18 9 C22 7 27 13 29 19 C31 25 26 29 18 29 C12 29 7 27 7 27Z" stroke="currentColor" stroke-width="1.3" fill="none"/><path d="M13 20 C15 14 21 12 25 16" stroke="currentColor" stroke-width="1" fill="none"/></svg>`
+  },
+  hawaiian: {
+    tagline: "The Aloha Spirit",
+    pattern: `<svg style="position:absolute;right:-20px;bottom:-20px;opacity:0.1;z-index:0;" width="200" height="160" viewBox="0 0 200 160"><path d="M40 120 Q60 60 100 40 Q140 20 160 60 Q180 100 140 120 Q100 140 60 120 Q40 100 40 120" stroke="white" stroke-width="1.5" fill="none"/><path d="M30 130 Q55 55 100 30 Q148 5 172 55 Q196 105 148 132 Q100 158 52 130" stroke="white" stroke-width="0.8" fill="none"/><circle cx="100" cy="80" r="18" stroke="white" stroke-width="1" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M18 6 C24 6 30 12 30 18 C30 27 22 32 18 32 C14 32 6 27 6 18 C6 12 12 6 18 6Z" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M12 18 Q18 10 24 18 Q18 26 12 18Z" stroke="currentColor" stroke-width="1" fill="none"/></svg>`
+  },
+  ana: {
+    tagline: "Inspiration of Japan",
+    pattern: `<svg style="position:absolute;right:12px;top:50%;transform:translateY(-50%);opacity:0.07;z-index:0;" width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" stroke="white" stroke-width="28" fill="none" opacity="0.25"/><circle cx="60" cy="60" r="25" stroke="white" stroke-width="1.2" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="13" stroke="currentColor" stroke-width="8" fill="none" opacity="0.2"/><circle cx="18" cy="18" r="7" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>`
+  },
+  vistara: {
+    tagline: "Fly the New Feeling",
+    pattern: `<svg style="position:absolute;right:-10px;bottom:-10px;opacity:0.09;z-index:0;" width="160" height="160" viewBox="0 0 160 160"><path d="M20 140 L80 20 L140 140" stroke="#D4AF37" stroke-width="1.5" fill="none"/><path d="M40 140 L80 60 L120 140" stroke="#D4AF37" stroke-width="1" fill="none"/><line x1="30" y1="110" x2="130" y2="110" stroke="#D4AF37" stroke-width="0.8"/><line x1="50" y1="80" x2="110" y2="80" stroke="#D4AF37" stroke-width="0.8"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M8 30 L18 6 L28 30" stroke="#D4AF37" stroke-width="1.6" fill="none"/><line x1="12" y1="22" x2="24" y2="22" stroke="#D4AF37" stroke-width="1.1"/></svg>`
+  },
+  qantas: {
+    tagline: "The Spirit of Australia",
+    pattern: `<svg style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);opacity:0.07;z-index:0;" width="140" height="140" viewBox="0 0 140 140"><path d="M70 10 C90 10 110 30 115 55 C120 75 110 95 92 110 C80 120 65 124 50 120 C30 114 15 98 12 78 C9 58 20 38 38 24 C48 16 58 10 70 10Z" stroke="white" stroke-width="1.5" fill="none"/><path d="M50 70 L85 45 L95 75 L60 100 Z" stroke="white" stroke-width="1" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M14 28 L22 8 L30 20 L18 28 Z" stroke="white" stroke-width="1.3" fill="none"/><path d="M6 22 L18 14 L20 28 Z" stroke="white" stroke-width="1" fill="none"/></svg>`
+  },
+  southwest: {
+    tagline: "Low Fares, Nothing to Hide",
+    pattern: `<svg style="position:absolute;right:-10px;bottom:-10px;opacity:0.12;z-index:0;" width="140" height="140" viewBox="0 0 140 140"><path d="M20 110 C20 110 60 60 70 30 C80 60 120 110 120 110" stroke="#F9B612" stroke-width="2" fill="none"/><path d="M35 110 C35 110 65 68 70 48 C75 68 105 110 105 110" stroke="#F9B612" stroke-width="1.2" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M8 26 C8 26 16 14 18 8 C20 14 28 26 28 26" stroke="#F9B612" stroke-width="1.8" fill="none"/><path d="M12 26 C12 26 16 18 18 13 C20 18 24 26 24 26" stroke="#F9B612" stroke-width="1.2" fill="none"/></svg>`
+  },
+  virgin: {
+    tagline: "See the World Differently",
+    pattern: `<svg style="position:absolute;right:-15px;bottom:-15px;opacity:0.07;z-index:0;" width="160" height="160" viewBox="0 0 160 160"><circle cx="80" cy="80" r="65" stroke="white" stroke-width="1.5" fill="none"/><circle cx="80" cy="80" r="40" stroke="white" stroke-width="1" fill="none"/><path d="M20 80 Q80 20 140 80 Q80 140 20 80Z" stroke="white" stroke-width="1" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="13" stroke="white" stroke-width="1.3" fill="none"/><path d="M5 18 Q18 5 31 18 Q18 31 5 18Z" stroke="white" stroke-width="1" fill="none"/></svg>`
+  },
+  etihad: {
+    tagline: "Choose Well",
+    pattern: `<svg style="position:absolute;right:-10px;top:10px;opacity:0.09;z-index:0;" width="150" height="150" viewBox="0 0 150 150"><path d="M75 10 L85 40 L118 40 L92 58 L102 88 L75 70 L48 88 L58 58 L32 40 L65 40 Z" stroke="#C5963A" stroke-width="1.5" fill="none"/><path d="M75 30 L81 48 L100 48 L86 58 L92 76 L75 66 L58 76 L64 58 L50 48 L69 48 Z" stroke="#C5963A" stroke-width="0.8" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M18 4 L21 12 L30 12 L23 17 L26 26 L18 21 L10 26 L13 17 L6 12 L15 12 Z" stroke="#C5963A" stroke-width="1.3" fill="none"/></svg>`
+  },
+  delta: {
+    tagline: "Keep Climbing",
+    pattern: `<svg style="position:absolute;right:-15px;bottom:-15px;opacity:0.07;z-index:0;" width="160" height="160" viewBox="0 0 160 160"><path d="M10 130 L80 10 L150 130 Z" stroke="white" stroke-width="1.5" fill="none"/><path d="M35 130 L80 45 L125 130 Z" stroke="white" stroke-width="1" fill="none"/><path d="M55 130 L80 75 L105 130 Z" stroke="white" stroke-width="0.7" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M5 30 L18 6 L31 30 Z" stroke="white" stroke-width="1.5" fill="none"/><path d="M12 30 L18 18 L24 30 Z" stroke="white" stroke-width="0.8" fill="none"/></svg>`
+  },
+  royaljordanian: {
+    tagline: "We Fly You Home",
+    pattern: `<svg style="position:absolute;right:-10px;top:-10px;opacity:0.09;z-index:0;" width="160" height="160" viewBox="0 0 160 160"><path d="M80 18 C80 18 94 32 99 47 C110 38 125 37 125 37 C125 37 116 50 116 62 C129 65 140 74 140 74 C140 74 127 81 116 80 C118 93 110 106 110 106 C110 106 99 99 92 91 C86 103 80 114 80 114 C80 114 74 103 68 91 C61 99 50 106 50 106 C50 106 42 93 44 80 C33 81 20 74 20 74 C20 74 31 65 44 62 C44 50 35 37 35 37 C35 37 50 38 61 47 C66 32 80 18 80 18Z" stroke="#D4AF37" stroke-width="1" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M18 5 C18 5 22 10 23 14 C27 11 32 10 32 10 C32 10 28 15 28 19 C33 20 36 23 36 23 C36 23 33 25 28 25 C29 29 27 34 27 34 C27 34 23 30 21 27 C19 31 18 35 18 35 C18 35 17 31 15 27 C13 30 9 34 9 34 C9 34 7 29 8 25 C3 25 0 23 0 23 C0 23 3 20 8 19 C8 15 4 10 4 10 C4 10 9 11 13 14 C14 10 18 5 18 5Z" stroke="#D4AF37" stroke-width="1" fill="none"/></svg>`
+  },
+  jetblue: {
+    tagline: "You Above All",
+    pattern: `<svg style="position:absolute;right:-10px;bottom:-10px;opacity:0.09;z-index:0;" width="160" height="140" viewBox="0 0 160 140"><rect x="10" y="30" width="140" height="80" rx="40" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="30" y="50" width="100" height="40" rx="20" stroke="currentColor" stroke-width="1" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect x="4" y="12" width="28" height="14" rx="7" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="10" y="16" width="16" height="6" rx="3" stroke="currentColor" stroke-width="1" fill="none"/></svg>`
+  },
+  american: {
+    tagline: "Something Special in the Air",
+    pattern: `<svg style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);opacity:0.06;z-index:0;" width="150" height="150" viewBox="0 0 150 150"><path d="M20 75 L60 20 L90 20 L75 55 L130 20 L115 75 L130 130 L75 95 L90 130 L60 130 L20 75Z" stroke="white" stroke-width="1.2" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M6 18 L14 6 L20 6 L18 14 L30 6 L27 18 L30 30 L18 22 L20 30 L14 30 Z" stroke="white" stroke-width="1.2" fill="none"/></svg>`
+  },
+  swiss: {
+    tagline: "Our Sign Is a Promise",
+    pattern: `<svg style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);opacity:0.09;z-index:0;" width="120" height="120" viewBox="0 0 120 120"><rect x="10" y="10" width="100" height="100" rx="8" stroke="white" stroke-width="1.5" fill="none"/><rect x="48" y="22" width="24" height="76" rx="3" fill="white" opacity="0.15"/><rect x="22" y="48" width="76" height="24" rx="3" fill="white" opacity="0.15"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect x="4" y="4" width="28" height="28" rx="3" stroke="white" stroke-width="1.5" fill="none"/><rect x="15" y="8" width="6" height="20" rx="1" fill="white" opacity="0.6"/><rect x="8" y="15" width="20" height="6" rx="1" fill="white" opacity="0.6"/></svg>`
+  },
+  latam: {
+    tagline: "A New World of Travel",
+    pattern: `<svg style="position:absolute;right:-10px;bottom:-10px;opacity:0.07;z-index:0;" width="160" height="140" viewBox="0 0 160 140"><path d="M80 10 C110 10 140 35 140 70 C140 105 110 130 80 130 C50 130 20 105 20 70 C20 35 50 10 80 10Z" stroke="white" stroke-width="1.2" fill="none"/><path d="M45 40 Q80 20 115 40 Q140 65 115 100 Q80 120 45 100 Q20 75 45 40Z" stroke="white" stroke-width="0.8" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="13" stroke="white" stroke-width="1.3" fill="none"/><path d="M10 18 C14 10 22 10 26 18 C22 26 14 26 10 18Z" stroke="white" stroke-width="0.9" fill="none"/></svg>`
+  },
+  aircanada: {
+    tagline: "A Breath of Fresh Air",
+    pattern: `<svg style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);opacity:0.09;z-index:0;" width="150" height="150" viewBox="0 0 150 150"><path d="M75 14 L78 44 L90 29 L82 54 L108 47 L88 64 L110 74 L88 84 L108 101 L82 94 L90 119 L78 104 L75 134 L72 104 L60 119 L68 94 L42 101 L62 84 L40 74 L62 64 L42 47 L68 54 L60 29 L72 44 Z" stroke="white" stroke-width="1.2" fill="none"/></svg>`,
+    icon: `<svg width="32" height="32" viewBox="0 0 36 36" fill="none"><path d="M18 4 L19.5 13 L25 8 L21 16 L31 13 L23 18 L31 23 L21 20 L25 28 L19.5 23 L18 32 L16.5 23 L11 28 L15 20 L5 23 L13 18 L5 13 L15 16 L11 8 L16.5 13 Z" stroke="white" stroke-width="1.1" fill="none"/></svg>`
+  }
+};
+
 function generateBarcode() {
   const bars = [];
-  const pattern = [3,1,2,1,3,2,1,1,2,3,1,2,1,3,1,2,2,1,3,1,2,1,1,3,2,1,3,1,2];
-  for (let i = 0; i < pattern.length; i++) {
-    const h = 20 + pattern[i] * 10;
+  const barPattern = [3,1,2,1,3,2,1,1,2,3,1,2,1,3,1,2,2,1,3,1,2,1,1,3,2,1,3,1,2];
+  for (let i = 0; i < barPattern.length; i++) {
+    const h = 20 + barPattern[i] * 10;
     const w = i % 2 === 0 ? 3 : 2;
     bars.push(`<div class="barcode-bar" style="height:${h}px;width:${w}px;"></div>`);
   }
@@ -1356,16 +1587,24 @@ function generateBarcode() {
 }
 
 function buildBoardingPass(g) {
-  const seatLetter = ['A','B','C','D','E','F'][Math.floor(Math.random()*3)];
-  const seatNum = `${g.table}${seatLetter}`;
   const pnr = Math.random().toString(36).substring(2,8).toUpperCase();
+  const design = airlineDesigns[g.theme] || {};
+  const tagline = design.tagline || g.tagline;
+  const pattern = design.pattern || '';
+  const icon = design.icon || '';
 
   return `
   <div class="boarding-pass theme-${g.theme}">
     <div class="bp-left">
       <div class="bp-boarding-label">BOARDING PASS</div>
-      <div class="bp-airline-name">${g.airline}</div>
-      <div class="bp-tagline">${g.tagline}</div>
+      ${pattern}
+      <div style="display:flex;align-items:center;gap:10px;position:relative;z-index:1;margin-bottom:4px;">
+        ${icon}
+        <div>
+          <div class="bp-airline-name">${g.airline}</div>
+          <div class="bp-tagline">${tagline}</div>
+        </div>
+      </div>
 
       <div class="bp-route">
         <div class="bp-airport">
@@ -1374,7 +1613,7 @@ function buildBoardingPass(g) {
         </div>
         <div class="bp-plane-route">
           <div class="bp-route-line" style="background:currentColor;opacity:0.3;"></div>
-          <div class="bp-plane-emoji">✈</div>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;filter:drop-shadow(0 0 4px rgba(255,255,255,0.3))"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
           <div class="bp-route-line" style="background:currentColor;opacity:0.3;"></div>
         </div>
         <div class="bp-airport">
@@ -1425,11 +1664,15 @@ function buildBoardingPass(g) {
           </div>
           <div class="bp-info-block">
             <div class="bp-info-label">Class</div>
-            <div class="bp-info-value">CELEBRATION</div>
+            <div class="bp-info-value">FIRST CLASS</div>
           </div>
           <div class="bp-info-block" style="grid-column:1/-1;">
             <div class="bp-info-label">Venue</div>
             <div class="bp-info-value" style="font-size:13px;">Royal Albert's Palace · 1050 King Georges Post Rd, Fords, NJ 08863</div>
+            <a href="https://maps.google.com/?q=1050+King+Georges+Post+Rd,+Fords,+NJ+08863" target="_blank" rel="noopener" class="directions-link">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Get Directions
+            </a>
           </div>
           <div class="bp-info-block" style="grid-column:1/-1;">
             <div class="bp-info-label">PNR</div>
@@ -1513,6 +1756,36 @@ function saveBoardingPass() {
     link.href = canvas.toDataURL('image/png');
     link.click();
   });
+}
+
+function addToCalendar() {
+  // June 26, 2026, 6:30 PM - 11:00 PM (Eastern Time)
+  const start = '20260626T223000Z'; // 6:30 PM EDT = 22:30 UTC
+  const end = '20260627T030000Z';   // 11:00 PM EDT = 03:00 UTC next day
+
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//NIRNAY2026//Graduation Party//EN',
+    'CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT',
+    'UID:nirnay2026-graduation@boardingpass',
+    `DTSTAMP:${new Date().toISOString().replace(/[-:]/g,'').split('.')[0]}Z`,
+    `DTSTART:${start}`,
+    `DTEND:${end}`,
+    "SUMMARY:Nirnay's Graduation Celebration",
+    'DESCRIPTION:Flight NIRNAY2026 — Boarding 6:30 PM. Gate A3 (Neel Kamal). Western semi-formal attire\\, please avoid blue.',
+    "LOCATION:Royal Albert's Palace\\, 1050 King Georges Post Rd\\, Fords\\, NJ 08863",
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'Nirnays-Graduation-NIRNAY2026.ics';
+  link.click();
+  URL.revokeObjectURL(link.href);
 }
 
 // Enter key support
